@@ -1,0 +1,7 @@
+VERSION = 1,
+
+option rng_cure
+{
+	type = double, min = 1.0, max = 99.0, default = 1.0,
+	page = rng_cure_general, translation = general_rngCure
+}
