@@ -19,6 +19,10 @@ RNGCureShared.currentOptions = nil
 
 -----------------------------------------------------
 --COMMON---------------------------------------------
+local function hasOptions()
+  return RNGCureShared.currentOptions ~= nil
+end
+
 local function has_key(table, key)
   return table[key] ~= nil
 end
@@ -126,5 +130,6 @@ end
 RNGCureShared.applyOptions = applyOptions
 RNGCureShared.getOptions = getOptions
 RNGCureShared.getLocalPlayers = getLocalPlayers
+RNGCureShared.hasOptions = hasOptions
 
 return RNGCureShared

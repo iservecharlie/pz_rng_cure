@@ -35,6 +35,7 @@ end
 
 local function onEveryTenMinutes()
   ensureOptionsInitialization()
+  print("Heartbeat... RNG Chance: "..RNGCureShared.currentOptions["rngCure"])
   local players = RNGCureShared.getLocalPlayers()
   for key, player in ipairs(players) do
     if player:getBodyDamage():IsInfected() then
