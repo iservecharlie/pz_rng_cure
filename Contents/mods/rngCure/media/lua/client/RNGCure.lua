@@ -18,10 +18,10 @@ local function shouldRollForInfectionSurvival(player)
   local bodyDamage = player:getBodyDamage()
   local infectionLevel = bodyDamage:getInfectionLevel()
   
-  if(infectionLevel >= 3 and not player:getModData().hasRolledDiceForInfectionInstance) then
-    bodyDamage:setInfectionLevel(5)
+  if(infectionLevel >= 90 and not player:getModData().hasRolledDiceForInfectionInstance) then
+    bodyDamage:setInfectionLevel(91)
   	return true 
-  elseif(infectionLevel < 5) then
+  elseif(infectionLevel < 90) then
     player:getModData().hasRolledDiceForInfectionInstance = false
   end
   return false
