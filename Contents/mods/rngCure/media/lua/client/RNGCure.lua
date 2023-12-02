@@ -18,10 +18,10 @@ local function shouldRollForInfectionSurvival(player)
   local bodyDamage = player:getBodyDamage()
   local infectionLevel = bodyDamage:getInfectionLevel()
   
-  if(infectionLevel >= 90 and not player:getModData().hasRolledDiceForInfectionInstance) then
-    bodyDamage:setInfectionLevel(91)
+  if(infectionLevel >= 3 and not player:getModData().hasRolledDiceForInfectionInstance) then
+    bodyDamage:setInfectionLevel(5)
   	return true 
-  elseif(infectionLevel < 90) then
+  elseif(infectionLevel < 5) then
     player:getModData().hasRolledDiceForInfectionInstance = false
   end
   return false
@@ -35,13 +35,12 @@ end
 
 local function onEveryTenMinutes()
   ensureOptionsInitialization()
-  print("Heartbeat... RNG Chance: "..RNGCureShared.currentOptions["rngCure"])
   local players = RNGCureShared.getLocalPlayers()
   for key, player in ipairs(players) do
     if player:getBodyDamage():IsInfected() then
       if shouldRollForInfectionSurvival(player) then		
         local diceRoll =  ZombRand(100)
-        if diceRoll <= RNGCureShared.currentOptions["rngCure"] then
+        if diceRoll <= RNGCureShared.currentOptions.general.rngCure then
           print(player:getUsername().." has been saved by the RNG God")
           cureVirus(player)
         else

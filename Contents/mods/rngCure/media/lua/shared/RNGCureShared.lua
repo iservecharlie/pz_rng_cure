@@ -53,7 +53,7 @@ end
 local function getDefaultOptions()
   return {
     ["general"] = {
-      ["rngCure"] = 10.0
+      ["rngCure"] = 1.0
     }
   }
 end
@@ -92,6 +92,7 @@ local function getSandboxOptionPath(group, prop)
 end
 
 local function getSandboxOptions()
+  print("### Getting sandbox options")
   local result = {}
   local defaults = getDefaultOptions()
   for group_index, group_key in pairs(get_keys(defaults)) do
