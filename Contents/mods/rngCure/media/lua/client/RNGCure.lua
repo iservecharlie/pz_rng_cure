@@ -40,11 +40,11 @@ local function onEveryTenMinutes()
     if player:getBodyDamage():IsInfected() then
       if shouldRollForInfectionSurvival(player) then		
         local diceRoll =  ZombRand(100)
-        if diceRoll <= RNGCureShared.currentOptions.general.rngCure then
-          print(player:getUsername().." has been saved by the RNG God")
+        if diceRoll <= tonumber(RNGCureShared.currentOptions.general.rngCure) then
           cureVirus(player)
+          print(player:getUsername().." has been saved by the RNG God")
         else
-          print(player:getUsername().." has will die")
+          print(player:getUsername().." will die")
         end
         player:getModData().hasRolledDiceForInfectionInstance = true
       end
