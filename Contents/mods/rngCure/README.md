@@ -1,9 +1,12 @@
 # RNG Cure (PZ Mod)
 
-Random chance of zombie virus being cured instead of dying
-
-Steam Workshop: `https://steamcommunity.com/sharedfiles/filedetails/?id=`
+Set a chance to be cured in last stage of zombie infection
 
 ## Installation
-
 Copy to mod directory under `/Zomboid/mods`.
+
+## Sandbox config
+RNGCure = {
+-- Minimum=1 Maximum=99 Default=11
+CureChance = 11
+}

@@ -27,24 +27,18 @@ local function shouldRollForInfectionSurvival(player)
   return false
 end
 
-local function ensureOptionsInitialization()
-  if not RNGCureShared.hasOptions() then
-    RNGCureShared.applyOptions(RNGCureShared.getOptions())
-  end
-end
-
 local function onEveryTenMinutes()
-  ensureOptionsInitialization()
   local players = RNGCureShared.getLocalPlayers()
   for key, player in ipairs(players) do
     if player:getBodyDamage():IsInfected() then
-      if shouldRollForInfectionSurvival(player) then		
+      if shouldRollForInfectionSurvival(player) then
+        print("RNG for cure is set to (percent): " ..  tostring(SandboxVars.RNGCure.CureChance))
         local diceRoll =  ZombRand(100)
-        if diceRoll <= tonumber(RNGCureShared.currentOptions.general.rngCure) then
+        if diceRoll <= tonumber(SandboxVars.RNGCure.CureChance) then
           cureVirus(player)
-          print(player:getUsername().." has been saved by the RNG God")
+          print(player:getUsername().." has been saved by the RNG God.")
         else
-          print(player:getUsername().." will die")
+          print(player:getUsername().." will die because failed dice roll with " .. tostring(diceRoll))
         end
         player:getModData().hasRolledDiceForInfectionInstance = true
       end
@@ -55,12 +49,6 @@ end
 Events.EveryTenMinutes.Add(onEveryTenMinutes)
 
 local function onGameStart()
-  RNGCureShared.applyOptions(RNGCureShared.getOptions())
+  print("RNG for cure is set to (percent): " .. tostring(SandboxVars.RNGCure.CureChance))
 end
 Events.OnGameStart.Add(onGameStart)
-
-local function onMainMenuEnter()
-  RNGCureShared.applyOptions(RNGCureShared.getOptions())
-end
-
-Events.OnMainMenuEnter.Add(onMainMenuEnter)

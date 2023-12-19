@@ -1,3 +1,3 @@
 Sandbox_EN = {
-    rng_cure_100_general_rngCure = "Change to cure Infection"
+    RNGCureCureChance = "Change to cure Infection"
 }

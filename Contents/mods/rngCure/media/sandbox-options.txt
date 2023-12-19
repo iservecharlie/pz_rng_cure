@@ -1,7 +1,4 @@
 VERSION = 1,
 
-option rng_cure_100_general_rngCure
-{
-	type = double, min = 1.0, max = 99.0, default = 1.0,
-	page = rng_cure_general, translation = general_rngCure
-}
+option RNGCure.CureChance
+{type = double, min = 1.0, max = 99.0, default = 11.0, page = RNGCure, translation = RNGCureCureChance}
