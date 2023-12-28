@@ -2,3 +2,9 @@ VERSION = 1,
 
 option RNGCure.CureChance
 {type = double, min = 1.0, max = 99.0, default = 11.0, page = RNGCure, translation = RNGCureCureChance}
+
+option RNGCure.RandomCureChanceProc
+{type = boolean, default = true, page = RNGCure, translation = RandomCureChanceProc}
+
+option RNGCure.DebugLogs
+{type = boolean, default = false, page = RNGCure, translation = RNGCureDebugLogs}

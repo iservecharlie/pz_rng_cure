@@ -1,3 +1,5 @@
 Sandbox_EN = {
-    RNGCureCureChance = "Change to cure Infection"
+    Sandbox_RNGCureCureChance = "Change to cure Infection",
+    Sandbox_RNGCureRandomCureChanceProc = "Random stage of infection proc for cure"
+    Sandbox_RNGCureDebugLogs = "Turn on debug logging"
 }

@@ -5,21 +5,24 @@ RNGCureShared.__index = RNGCureShared
 --CONST----------------------------------------------
 -----------------------------------------------------
 
-RNGCureShared.version = "1.0"
-RNGCureShared.optionsVersion = "1.0"
+RNGCureShared.version = "1.1"
+RNGCureShared.optionsVersion = "1.1"
 RNGCureShared.author = "titoCardo"
 RNGCureShared.modName = "RNG Cure"
 RNGCureShared.modId = "rng_cure"
 
 -----------------------------------------------------
 --COMMON---------------------------------------------
-local function getLocalPlayers()
+local function getLocalInfectedPlayers()
   local result = {}
   for playerIndex = 0, getNumActivePlayers()-1 do
     local player = getSpecificPlayer(playerIndex)
     if player ~= nil then
       if player:isLocalPlayer() then
-        table.insert(result, player)
+        local bodyDamage = player:getBodyDamage()
+        if bodyDamage:IsInfected() and bodyDamage:getInfectionLevel() < 100 then
+          table.insert(result, player)
+        end
       end
     end
   end
@@ -29,6 +32,6 @@ end
 --EXPORTS--------------------------------------------
 -----------------------------------------------------
 
-RNGCureShared.getLocalPlayers = getLocalPlayers
+RNGCureShared.getLocalInfectedPlayers = getLocalInfectedPlayers
 
 return RNGCureShared
